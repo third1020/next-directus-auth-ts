@@ -1,21 +1,15 @@
 {
   "extends": [
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
   ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
     "react-hooks/exhaustive-deps": "warn",
     "prefer-const": "warn",
-    "no-console": "warn"
-  },
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "no-undef": "off",
-        "no-unused-vars": "off"
-      }
-    }
-  ]
+    "no-console": "warn",
+    "react/no-unescaped-entities": "off"
+  }
 }
