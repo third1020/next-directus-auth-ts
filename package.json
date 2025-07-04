@@ -13,7 +13,6 @@
     "@erp/config": "*",
     "@erp/types": "*",
     "@erp/utils": "*",
-    "@erp/theme": "*",
     "@directus/sdk": "^17.0.1",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-avatar": "^1.1.0",

@@ -1,5 +1,5 @@
 import "./globals.css"
-import "@erp/theme/dist/index.css"
+import "@eintrek/erp-theme/dist/index.css"
 import { Inter } from "next/font/google"
 import { getServerSession } from "next-auth/next"
 import { options } from "@/lib/auth/options"
