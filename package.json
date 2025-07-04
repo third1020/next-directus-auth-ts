@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "erp-main-app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,9 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "node .husky/install.mjs"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
+    "@erp/config": "*",
+    "@erp/types": "*",
+    "@erp/utils": "*",
+    "@erp/theme": "*",
     "@directus/sdk": "^17.0.1",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-avatar": "^1.1.0",

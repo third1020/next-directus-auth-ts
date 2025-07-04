@@ -23,7 +23,7 @@ interface MenuProps {
 
 export function Menu({ isOpen }: MenuProps) {
   const pathname = usePathname()
-  const menuList = getMenuList(pathname)
+  const menuList = getMenuList(pathname || "")
 
   return (
     <ScrollArea className="[&>div>div[style]]:!block">
@@ -32,7 +32,7 @@ export function Menu({ isOpen }: MenuProps) {
           {menuList.map(({ groupLabel, menus }, index) => (
             <li className={cn("w-full", groupLabel ? "pt-5" : "")} key={index}>
               {(isOpen && groupLabel) || isOpen === undefined ? (
-                <p className="max-w-[248px] truncate px-4 pb-2 text-sm font-medium text-muted-foreground">
+                <p className="text-muted-foreground max-w-[248px] truncate px-4 pb-2 text-sm font-medium">
                   {groupLabel}
                 </p>
               ) : !isOpen && isOpen !== undefined && groupLabel ? (

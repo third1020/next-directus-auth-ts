@@ -1,115 +1,132 @@
-import * as React from "react"
-import { ChevronRightIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
-import { Slot } from "@radix-ui/react-slot"
+"use client"
 
-import { cn } from "@/lib/utils"
+import { ReactNode } from 'react'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
 
-const Breadcrumb = React.forwardRef<
-  HTMLElement,
-  React.ComponentPropsWithoutRef<"nav"> & {
-    separator?: React.ReactNode
+interface BreadcrumbProps {
+  children: ReactNode
+}
+
+export function Breadcrumb({ children }: BreadcrumbProps) {
+  return (
+    <nav className="flex items-center space-x-1 text-sm text-muted-foreground mb-4">
+      {children}
+    </nav>
+  )
+}
+
+export function BreadcrumbList({ children }: { children: ReactNode }) {
+  return <ol className="flex items-center space-x-1">{children}</ol>
+}
+
+export function BreadcrumbItem({ children }: { children: ReactNode }) {
+  return <li className="flex items-center">{children}</li>
+}
+
+export function BreadcrumbLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <Link 
+      href={href}
+      className="hover:text-foreground transition-colors"
+    >
+      {children}
+    </Link>
+  )
+}
+
+export function BreadcrumbPage({ children }: { children: ReactNode }) {
+  return <span className="text-foreground font-medium">{children}</span>
+}
+
+export function BreadcrumbSeparator() {
+  return <ChevronRight className="h-4 w-4" />
+}
+
+export function AppBreadcrumb() {
+  const pathname = usePathname()
+  const segments = pathname?.split('/').filter(Boolean) || []
+
+  const generateBreadcrumbs = () => {
+    const breadcrumbs = []
+    
+    // Always start with Dashboard
+    breadcrumbs.push({
+      label: 'Dashboard',
+      href: '/',
+      isCurrent: segments.length === 0
+    })
+
+    if (segments[0]) {
+      const moduleMap: Record<string, string> = {
+        'hr': 'Human Resources',
+        'inventory': 'Inventory',
+        'sales': 'Sales',
+        'settings': 'Settings',
+        'reports': 'Reports',
+        'accounts': 'Accounting',
+        'test': 'Test'
+      }
+      const moduleLabel = moduleMap[segments[0]] || segments[0]
+      breadcrumbs.push({
+        label: moduleLabel,
+        href: `/${segments[0]}`,
+        isCurrent: segments.length === 1
+      })
+    }
+
+    if (segments[1]) {
+      const actionMap: Record<string, string> = {
+        'dashboard': 'Dashboard',
+        'employees': 'Employees',
+        'payroll': 'Payroll',
+        'attendance': 'Attendance',
+        'items': 'Items',
+        'categories': 'Categories',
+        'transactions': 'Transactions',
+        'orders': 'Orders',
+        'customers': 'Customers',
+        'products': 'Products',
+        'users': 'Users',
+        'security': 'Security',
+        'sales': 'Sales Reports',
+        'inventory': 'Inventory Reports',
+        'financial': 'Financial Reports'
+      }
+      const actionLabel = actionMap[segments[1]] || segments[1]
+      breadcrumbs.push({
+        label: actionLabel,
+        href: pathname,
+        isCurrent: true
+      })
+    }
+    
+    return breadcrumbs
   }
->(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />)
-Breadcrumb.displayName = "Breadcrumb"
 
-const BreadcrumbList = React.forwardRef<
-  HTMLOListElement,
-  React.ComponentPropsWithoutRef<"ol">
->(({ className, ...props }, ref) => (
-  <ol
-    ref={ref}
-    className={cn(
-      "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
-      className
-    )}
-    {...props}
-  />
-))
-BreadcrumbList.displayName = "BreadcrumbList"
+  const breadcrumbs = generateBreadcrumbs()
 
-const BreadcrumbItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentPropsWithoutRef<"li">
->(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    className={cn("inline-flex items-center gap-1.5", className)}
-    {...props}
-  />
-))
-BreadcrumbItem.displayName = "BreadcrumbItem"
-
-const BreadcrumbLink = React.forwardRef<
-  HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"a"> & {
-    asChild?: boolean
+  if (breadcrumbs.length <= 1) {
+    return null // Don't show breadcrumb if we're just on the main dashboard
   }
->(({ asChild, className, ...props }, ref) => {
-  const Comp = asChild ? Slot : "a"
 
   return (
-    <Comp
-      ref={ref}
-      className={cn("transition-colors hover:text-foreground", className)}
-      {...props}
-    />
+    <Breadcrumb>
+      <BreadcrumbList>
+        {breadcrumbs.map((breadcrumb, index) => (
+          <BreadcrumbItem key={index}>
+            {index > 0 && <BreadcrumbSeparator />}
+            {breadcrumb.isCurrent ? (
+              <BreadcrumbPage>{breadcrumb.label}</BreadcrumbPage>
+            ) : (
+              <BreadcrumbLink href={breadcrumb.href}>
+                {breadcrumb.label}
+              </BreadcrumbLink>
+            )}
+          </BreadcrumbItem>
+        ))}
+      </BreadcrumbList>
+    </Breadcrumb>
   )
-})
-BreadcrumbLink.displayName = "BreadcrumbLink"
-
-const BreadcrumbPage = React.forwardRef<
-  HTMLSpanElement,
-  React.ComponentPropsWithoutRef<"span">
->(({ className, ...props }, ref) => (
-  <span
-    ref={ref}
-    role="link"
-    aria-disabled="true"
-    aria-current="page"
-    className={cn("font-normal text-foreground", className)}
-    {...props}
-  />
-))
-BreadcrumbPage.displayName = "BreadcrumbPage"
-
-const BreadcrumbSeparator = ({
-  children,
-  className,
-  ...props
-}: React.ComponentProps<"li">) => (
-  <li
-    role="presentation"
-    aria-hidden="true"
-    className={cn("[&>svg]:size-3.5", className)}
-    {...props}
-  >
-    {children ?? <ChevronRightIcon />}
-  </li>
-)
-BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
-
-const BreadcrumbEllipsis = ({
-  className,
-  ...props
-}: React.ComponentProps<"span">) => (
-  <span
-    role="presentation"
-    aria-hidden="true"
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
-    {...props}
-  >
-    <DotsHorizontalIcon className="h-4 w-4" />
-    <span className="sr-only">More</span>
-  </span>
-)
-BreadcrumbEllipsis.displayName = "BreadcrumbElipssis"
-
-export {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  BreadcrumbEllipsis,
 }

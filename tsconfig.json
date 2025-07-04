@@ -18,8 +18,14 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@erp/ui": ["../../packages/ui/src"],
+      "@erp/config": ["../../packages/config"],
+      "@erp/types": ["../../packages/types"],
+      "@erp/utils": ["../../packages/utils"],
+      "@erp/theme": ["../../packages/erp-theme"]
     }
   },
   "include": [
