@@ -1,47 +1,74 @@
 
-> erp-main-app@1.0.0 build
+> erp-main-app@1.0.0 build /Users/third/Documents/Erp/micro-frontend-project/apps/erp-main-app
 > next build
 
-[1G[0K   [1m[38;2;173;127;168m▲ Next.js 15.3.4[39m[22m
+   [1m[38;2;173;127;168m▲ Next.js 15.3.5[39m[22m
    - Environments: .env.local, .env
    - Experiments (use with caution):
      [1m✓[22m webpackBuildWorker
 
  [37m[1m [22m[39m Creating an optimized production build ...
-Failed to compile.
+ [32m[1m✓[22m[39m Compiled successfully in 1000ms
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G[?25h
+./src/components/admin-provider.tsx
+5:3  Warning: 'session' is defined but never used.  @typescript-eslint/no-unused-vars
+8:12  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
 
-./src/app/(app)/hr/page.tsx
-Module not found: Can't resolve '@/components/admin-panel/content-layout'
+./src/components/mode-toggle.tsx
+10:21  Warning: 'theme' is assigned a value but never used.  @typescript-eslint/no-unused-vars
 
-https://nextjs.org/docs/messages/module-not-found
+./src/lib/auth/options.ts
+58:25  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
 
-./src/app/(app)/hr/page.tsx
-Module not found: Can't resolve '@/components/ui/card'
+./src/lib/menu-list.ts
+2:3  Warning: 'Tag' is defined but never used.  @typescript-eslint/no-unused-vars
+3:3  Warning: 'Users' is defined but never used.  @typescript-eslint/no-unused-vars
+5:3  Warning: 'Bookmark' is defined but never used.  @typescript-eslint/no-unused-vars
+6:3  Warning: 'SquarePen' is defined but never used.  @typescript-eslint/no-unused-vars
+9:3  Warning: 'Component' is defined but never used.  @typescript-eslint/no-unused-vars
+10:3  Warning: 'LayoutDashboard' is defined but never used.  @typescript-eslint/no-unused-vars
+11:3  Warning: 'GitBranch' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'ShoppingCart' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'FileText' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'Building2' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'PackageCheck' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'Package' is defined but never used.  @typescript-eslint/no-unused-vars
 
-https://nextjs.org/docs/messages/module-not-found
+./src/types/next-auth.d.ts
+1:8  Warning: 'NextAuth' is defined but never used.  @typescript-eslint/no-unused-vars
+2:10  Warning: 'JWT' is defined but never used.  @typescript-eslint/no-unused-vars
 
-./src/app/(app)/inventory/page.tsx
-Module not found: Can't resolve '@/components/admin-panel/content-layout'
+./src/types/webpack.d.ts
+3:24  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+8:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+14:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
 
-https://nextjs.org/docs/messages/module-not-found
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+[?25l [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G[?25h    [32m[1m✓[22m[39m Linting and checking validity of types 
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
+[?25l [37m[1m [22m[39m Generating static pages (0/11)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/11)  [36m[=   ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (11/11)
+[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
+[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization     [32m[1m✓[22m[39m Finalizing page optimization 
 
-./src/app/(app)/inventory/page.tsx
-Module not found: Can't resolve '@/components/ui/card'
+[4mRoute (app)[24m                                 [4mSize[24m  [4mFirst Load JS[24m  [4m[24m  [4m[24m
+┌ ƒ /                                    3.74 kB         [37m[1m172 kB[22m[39m
+├ ƒ /_not-found                            977 B         [37m[1m103 kB[22m[39m
+├ ƒ /api/auth/[...nextauth]                144 B         [37m[1m102 kB[22m[39m
+├ ƒ /hr                                    148 B         [37m[1m168 kB[22m[39m
+├ ƒ /inventory                             149 B         [37m[1m168 kB[22m[39m
+├ ƒ /login                                 25 kB         [37m[1m147 kB[22m[39m
+├ ƒ /reports                               148 B         [37m[1m168 kB[22m[39m
+├ ƒ /sales                                 148 B         [37m[1m168 kB[22m[39m
+├ ƒ /settings                              149 B         [37m[1m168 kB[22m[39m
+└ ƒ /test                                  144 B         [37m[1m102 kB[22m[39m
++ First Load JS shared by all             [37m[1m102 kB[22m[39m
+  ├ chunks/567-884d9a3a10ce5cee.js       46.4 kB
+  ├ chunks/f0e3bb2d-a5dba086d9a8c442.js  53.2 kB
+  └ other shared chunks (total)          1.94 kB
 
-https://nextjs.org/docs/messages/module-not-found
 
-./src/app/(app)/layout.tsx
-Module not found: Can't resolve '@/components/admin-panel/admin-panel-layout'
+ƒ Middleware                             [37m[1m60.1 kB[22m[39m
 
-https://nextjs.org/docs/messages/module-not-found
+ƒ  (Dynamic)  server-rendered on demand
 
-
-> Build failed because of webpack errors
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m Lifecycle script `build` failed with error:
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mcode[39m [33m1[39m
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mpath[39m /Users/third/Documents/Erp/micro-frontend-project/apps/erp-main-app
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mworkspace[39m erp-main-app@1.0.0
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mlocation[39m /Users/third/Documents/Erp/micro-frontend-project/apps/erp-main-app
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m command failed
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mcommand[39m sh -c next build
-[1G[0K⠙[1G[0K
+[?25h

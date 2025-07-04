@@ -21,6 +21,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@erp/auth": ["../../packages/auth/src"],
+      "@erp/layout": ["../../packages/layout/src"],
       "@erp/ui": ["../../packages/ui/src"],
       "@erp/config": ["../../packages/config"],
       "@erp/types": ["../../packages/types"],
